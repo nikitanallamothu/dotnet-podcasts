@@ -7,7 +7,7 @@ param administratorLoginPassword string
 param acrName string
 param serverName string
 param sqlDBName string = 'Podcast'
-param nonCanaryLocation = 'eastus'
+param nonCanaryLocation string = 'eastus'
 param administratorLogin string
 param storageAccountName string
 param kubernetesEnvName string
