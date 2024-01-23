@@ -72,7 +72,7 @@ resource feedQueue 'Microsoft.Storage/storageAccounts/queueServices/queues@2022-
 
 resource workspace 'Microsoft.OperationalInsights/workspaces@2021-06-01' = {
   name: workspaceName
-  location: location
+  location: 'eastus'
   properties: {
     sku: {
       name: 'PerGB2018'
