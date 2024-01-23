@@ -16,6 +16,7 @@ param sku string = 'S1'
 param linuxFxVersion string = 'DOTNETCORE|7.0'
 param serverName string
 param sqlDBName string = 'ListenTogether'
+param nonCanaryLocation string = 'eastus'
 param administratorLogin string
 
 @description('The name of the API container app.')
@@ -101,7 +102,7 @@ resource sqlServer 'Microsoft.Sql/servers@2021-11-01' = {
 resource sqlDB 'Microsoft.Sql/servers/databases@2021-11-01' = {
   parent: sqlServer
   name: sqlDBName
-  location: location
+  location: nonCanaryLocation
   sku: {
     name: 'Basic'
     tier: 'Basic'
