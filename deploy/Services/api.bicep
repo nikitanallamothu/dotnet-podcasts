@@ -7,6 +7,7 @@ param administratorLoginPassword string
 param acrName string
 param serverName string
 param sqlDBName string = 'Podcast'
+param nonCanaryLocation = 'eastus'
 param administratorLogin string
 param storageAccountName string
 param kubernetesEnvName string
@@ -24,7 +25,7 @@ var deployIngestion = false
 
 resource sqlServer 'Microsoft.Sql/servers@2021-11-01' = {
   name: serverName
-  location: location
+  location: nonCanaryLocation
   properties: {
     administratorLogin: administratorLogin
     administratorLoginPassword: administratorLoginPassword
@@ -34,7 +35,7 @@ resource sqlServer 'Microsoft.Sql/servers@2021-11-01' = {
 resource sqlDB 'Microsoft.Sql/servers/databases@2021-11-01' = {
   parent: sqlServer
   name: sqlDBName
-  location: location
+  location: nonCanaryLocation
   sku: {
     name: 'Basic'
     tier: 'Basic'
@@ -72,7 +73,7 @@ resource feedQueue 'Microsoft.Storage/storageAccounts/queueServices/queues@2022-
 
 resource workspace 'Microsoft.OperationalInsights/workspaces@2021-06-01' = {
   name: workspaceName
-  location: 'eastus'
+  location: nonCanaryLocation
   properties: {
     sku: {
       name: 'PerGB2018'
