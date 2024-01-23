@@ -40,7 +40,7 @@ jobs:
           files: "src/Web/Client/wwwroot/appsettings.json"
         env:
           PodcastApi.BaseAddress: ${{ env.PODCAST_API_URL }}
-          ListenTogetherHub: "https://${{secrets.HUB_WEBAPP_NAME}}.azurewebsites.net/listentogether"
+          ListenTogetherHub: "https://myhubapp-canary.azurewebsites.net/listentogether"
 
       - name: Build
         run: dotnet build src/Web/Server --configuration Release
@@ -75,7 +75,7 @@ jobs:
             $webAppName = '${{ secrets.WEBAPP_NAME }}'
             $servicePlanName = '${{ secrets.SERVICE_PLAN_NAME }}'
             $servicePlanSku = '${{ secrets.SERVICE_PLAN_SKU }}'
-            $hubWebAppName = '${{ secrets.HUB_WEBAPP_NAME }}'
+            $hubWebAppName = 'myhubapp-canary'
             $apiName = '${{ secrets.API_RESOURCE_NAME }}'
            
             az deployment group create -n "$($deploymentName)" `
