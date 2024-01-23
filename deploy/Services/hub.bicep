@@ -92,7 +92,7 @@ resource webAppConnectionString 'Microsoft.Web/sites/config@2022-03-01' = {
 
 resource sqlServer 'Microsoft.Sql/servers@2021-11-01' = {
   name: serverName
-  location: location
+  location: nonCanaryLocation
   properties: {
     administratorLogin: administratorLogin
     administratorLoginPassword: administratorLoginPassword
